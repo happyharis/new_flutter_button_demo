@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:material_button_demo/line_buttons.dart';
-import 'package:material_button_demo/text_buttons.dart';
-
+import 'line_buttons.dart';
+import 'text_buttons.dart';
 import 'levatating_buttons.dart';
+import 'package:flutter/scheduler.dart' show timeDilation;
 
 void main() {
+  // Slow down animation
+  // timeDilation = 7.0;
   runApp(MyApp());
 }
 
@@ -15,10 +17,25 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.purple,
+        // buttonTheme: ButtonThemeData(),
+        // elevatedButtonTheme: ElevatedButtonThemeData(
+        //   style: ButtonStyle(backgroundColor: backgroundcColor),
+        // ),
       ),
       // home: TextButtonDemo(),
-      // home: LevatatingButtonDemo(),
-      home: LineButtonDemo(),
+      // home: LineButtonDemo(),
+      home: LevatatingButtonDemo(),
     );
   }
 }
+
+final backgroundcColor = MaterialStateProperty.resolveWith<Color>(
+  (Set<MaterialState> states) {
+    if (states.contains(MaterialState.hovered))
+      return Colors.blue.withOpacity(0.04);
+    if (states.contains(MaterialState.focused) ||
+        states.contains(MaterialState.pressed))
+      return Colors.blue.withOpacity(0.12);
+    return null; // Defer to the widget's default.
+  },
+);

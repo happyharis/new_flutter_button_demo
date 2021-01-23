@@ -7,7 +7,7 @@ class LevatatingButtonDemo extends StatelessWidget {
     return DemoScaffold(
       oldButton: RaisedButton(
         color: Colors.red,
-        textColor: Colors.white,
+        // textColor: Colors.white,
         disabledColor: Colors.blue,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -21,8 +21,8 @@ class LevatatingButtonDemo extends StatelessWidget {
       ),
       newButton: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: Colors.red,
-          onPrimary: Colors.white,
+          // primary: Colors.red,
+          // onPrimary: Colors.white,
           onSurface: Colors.blue,
         ),
         child: Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:material_button_demo/demo_scaffold.dart';
 
 class TextButtonDemo extends StatelessWidget {
@@ -9,6 +10,7 @@ class TextButtonDemo extends StatelessWidget {
         focusColor: Colors.red,
         hoverColor: Colors.green,
         splashColor: Colors.blue,
+        // color: Colors.blue,
 
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -22,11 +24,18 @@ class TextButtonDemo extends StatelessWidget {
       ),
       newButton: TextButton(
         style: ButtonStyle(
+          // foregroundColor: MaterialStateProperty.all<Color>(Colors.blue),
           overlayColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
-            if (states.contains(MaterialState.focused)) return Colors.red;
-            if (states.contains(MaterialState.hovered)) return Colors.green;
-            if (states.contains(MaterialState.pressed)) return Colors.blue;
+            if (states.contains(MaterialState.focused)) {
+              return Colors.red;
+            }
+            if (states.contains(MaterialState.hovered)) {
+              return Colors.green;
+            }
+            if (states.contains(MaterialState.pressed)) {
+              return Colors.blue.shade100;
+            }
             return null; // Defer to the widget's default.
           }),
         ),
